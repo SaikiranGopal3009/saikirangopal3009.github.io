@@ -3,155 +3,727 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Saikiran Gopalakrishnan | Portfolio</title>
+
+    <meta
+        name="description"
+        content="Saikiran Gopalakrishnan's software engineering portfolio: CAD tooling, digital twins, simulation, mapping tools, and 3D geometry processing."
+    >
+
+    <meta name="author" content="Saikiran Gopalakrishnan">
+    <meta name="theme-color" content="#0d1117">
+
+    <!-- Social sharing metadata -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta
+        property="og:site_name"
+        content="Saikiran Gopalakrishnan | Portfolio"
+    >
+    <meta
+        property="og:title"
+        content="Saikiran Gopalakrishnan | Software Engineer"
+    >
+    <meta
+        property="og:description"
+        content="Explore my work in CAD tooling, digital twins, simulation, mapping, and 3D geometry processing."
+    >
+
+    <!--
+        Once your portfolio is hosted, add its public URL and a public
+        preview image URL here:
+
+        <link rel="canonical" href="https://your-portfolio-domain.com/">
+        <meta property="og:url" content="https://your-portfolio-domain.com/">
+        <meta
+            property="og:image"
+            content="https://your-portfolio-domain.com/social-preview.png"
+        >
+        <meta
+            property="og:image:alt"
+            content="Saikiran Gopalakrishnan — Software Engineering Portfolio"
+        >
+    -->
+
     <style>
         :root {
+            color-scheme: dark;
             --bg-main: #0d1117;
             --bg-card: #161b22;
             --border-color: #30363d;
             --text-primary: #c9d1d9;
-            --text-secondary: #8b949e;
+            --text-secondary: #a0aab6;
+            --heading-color: #f0f6fc;
             --accent-blue: #58a6ff;
             --accent-green: #238636;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 110px;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Helvetica,
+                Arial,
+                sans-serif;
             background-color: var(--bg-main);
             color: var(--text-primary);
             line-height: 1.6;
-            scroll-behavior: smooth;
+            overflow-wrap: break-word;
         }
+
+        a {
+            color: var(--accent-blue);
+            text-underline-offset: 4px;
+        }
+
+        a:focus-visible {
+            outline: 3px solid var(--accent-blue);
+            outline-offset: 5px;
+            border-radius: 4px;
+        }
+
+        .skip-link {
+            position: fixed;
+            top: 8px;
+            left: 8px;
+            z-index: 200;
+            padding: 10px 16px;
+            border-radius: 6px;
+            background-color: var(--heading-color);
+            color: var(--bg-main);
+            transform: translateY(-200%);
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+        }
+
         nav {
-            background-color: var(--bg-card);
-            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 100;
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
         }
+
         .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 16px;
+            max-width: 1100px;
+            margin: 0 auto;
             padding: 16px 24px;
         }
-        .logo { font-weight: 600; font-size: 1.2rem; color: var(--text-primary); text-decoration: none; }
-        .nav-links a { color: var(--text-secondary); text-decoration: none; margin-left: 20px; font-size: 0.95rem; transition: color 0.2s ease; }
-        .nav-links a:hover { color: var(--accent-blue); }
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
-        .hero { padding: 60px 0; border-bottom: 1px solid var(--border-color); margin-bottom: 40px; }
-        .hero h1 { font-size: 2.5rem; margin-bottom: 12px; color: #f0f6fc; }
-        .hero h1 span { color: var(--accent-blue); }
-        .hero p { font-size: 1.2rem; color: var(--text-secondary); max-width: 750px; margin-bottom: 24px; }
-        .hero p strong { color: var(--text-primary); }
-        .meta-info { display: flex; flex-direction: column; gap: 8px; font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 24px; }
-        .meta-item { display: flex; align-items: center; gap: 8px; }
-        .btn-container { display: flex; gap: 12px; flex-wrap: wrap; }
-        .btn { display: inline-block; background-color: var(--accent-green); color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: background-color 0.2s ease; }
-        .btn:hover { background-color: #2ea44f; }
-        .btn-secondary { background-color: transparent; border: 1px solid var(--border-color); color: var(--accent-blue); }
-        .btn-secondary:hover { background-color: rgba(56, 139, 253, 0.1); border-color: var(--accent-blue); }
-        section { padding: 40px 0; border-bottom: 1px solid var(--border-color); }
-        h2 { font-size: 1.8rem; margin-bottom: 24px; color: #f0f6fc; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 24px; transition: transform 0.2s, border-color 0.2s; }
-        .card:hover { transform: translateY(-2px); border-color: var(--accent-blue); }
-        .card h3 { margin-bottom: 8px; color: var(--accent-blue); font-size: 1.2rem; }
-        .card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 16px; }
-        .tags { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag { background-color: rgba(56, 139, 253, 0.1); color: var(--accent-blue); font-size: 0.75rem; padding: 4px 8px; border-radius: 20px; font-weight: 500; }
-        .publication-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px; }
-        .pub-card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 20px; }
-        .pub-title { font-weight: 600; color: #f0f6fc; margin-bottom: 4px; font-size: 1.1rem; }
-        .pub-authors { font-size: 0.95rem; color: var(--text-primary); margin-bottom: 2px; }
-        .pub-meta { font-size: 0.9rem; color: var(--text-secondary); }
-        .contact { border-bottom: none; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 32px; text-align: center; margin-top: 40px; }
-        .contact p { margin-bottom: 20px; color: var(--text-secondary); }
-        footer { text-align: center; padding: 40px 0; color: var(--text-secondary); font-size: 0.85rem; border-top: 1px solid var(--border-color); margin-top: 60px; }
+
+        .logo {
+            color: var(--text-primary);
+            font-size: 1.15rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero {
+            padding: 40px 0 60px;
+            margin-bottom: 16px;
+        }
+
+        .profile-pic {
+            display: block;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+            border: 3px solid var(--border-color);
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+        }
+
+        .hero h1 {
+            margin-bottom: 16px;
+            color: var(--heading-color);
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            line-height: 1.2;
+        }
+
+        .hero h1 .name {
+            color: var(--accent-blue);
+        }
+
+        .hero > p {
+            max-width: 750px;
+            margin-bottom: 24px;
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+        }
+
+        .hero strong {
+            color: var(--text-primary);
+        }
+
+        .meta-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 24px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            list-style: none;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .meta-icon {
+            flex-shrink: 0;
+        }
+
+        .btn-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 44px;
+            padding: 10px 20px;
+            border: 1px solid transparent;
+            border-radius: 6px;
+            background-color: var(--accent-green);
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            transition:
+                background-color 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #2a7d3e;
+        }
+
+        .btn-secondary {
+            border-color: var(--border-color);
+            background-color: transparent;
+            color: var(--accent-blue);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-blue);
+            background-color: rgb(56 139 253 / 10%);
+        }
+
+        .btn svg {
+            flex-shrink: 0;
+        }
+
+        h2 {
+            margin-bottom: 24px;
+            color: var(--heading-color);
+            font-size: clamp(1.5rem, 4vw, 1.8rem);
+            line-height: 1.3;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            min-width: 0;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--bg-card);
+            transition:
+                transform 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-blue);
+        }
+
+        .card h3 {
+            margin-bottom: 8px;
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .tag {
+            padding: 4px 8px;
+            border-radius: 20px;
+            background-color: rgb(56 139 253 / 10%);
+            color: var(--accent-blue);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .publication-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .pub-card {
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--bg-card);
+        }
+
+        .pub-title {
+            margin-bottom: 8px;
+            color: var(--heading-color);
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .pub-authors {
+            margin-bottom: 4px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .pub-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .contact {
+            margin-top: 40px;
+            padding: 32px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--bg-card);
+            text-align: center;
+        }
+
+        .contact p {
+            max-width: 700px;
+            margin: 0 auto 20px;
+            color: var(--text-secondary);
+        }
+
+        .contact .btn-container {
+            justify-content: center;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 32px 24px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 640px) {
+            html {
+                scroll-padding-top: 150px;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                padding: 14px 20px;
+            }
+
+            .logo {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                gap: 10px 18px;
+            }
+
+            .container {
+                padding: 24px 20px;
+            }
+
+            .hero {
+                padding-top: 24px;
+                padding-bottom: 40px;
+            }
+
+            .hero > p {
+                font-size: 1.05rem;
+            }
+
+            .card,
+            .pub-card,
+            .contact {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .btn-container {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+            }
+
+            .card:hover {
+                transform: none;
+            }
+        }
     </style>
 </head>
-<body>
 
-    <nav>
+<body id="top">
+    <a href="#main-content" class="skip-link">
+        Skip to main content
+    </a>
+
+    <nav aria-label="Main navigation">
         <div class="nav-container">
-            <a href="#" class="logo">Saikiran Gopalakrishnan</a>
-            <div class="nav-links">
-                <a href="#projects">Projects</a>
-                <a href="#publications">Publications</a>
-                <a href="#contact">Contact</a>
-            </div>
+            <a href="#top" class="logo">
+                Saikiran Gopalakrishnan
+            </a>
+
+            <ul class="nav-links">
+                <li>
+                    <a href="#projects">Projects</a>
+                </li>
+                <li>
+                    <a href="#publications">Publications</a>
+                </li>
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+            </ul>
         </div>
     </nav>
 
-    <div class="container">
-        <!-- Hero Section -->
-        <section class="hero">
-            <img src="profile.PNG" alt="Saikiran Gopalakrishnan" class="profile-pic">
-            <h1>Hi, I'm <span>Saikiran</span> 🎧</h1>
-            <p>I am a <strong>Software Engineer</strong> specialized in CAD tooling, digital twins, simulation and mapping tooling, and 3D geometry processing pipelines.</p>
-            <div class="meta-info">
-                <div class="meta-item">📍 Chicago</div>
-                <div class="meta-item">💼 Technology Consultant @ IndX - Design Automation Lab</div>
-                <div class="meta-item">🎓 Purdue University - MS, PhD in Aeronautics & Astronautics (Focus Area: Digital Twin Tooling)</div>
-                <div class="meta-item">🎓 National Institute of Technology, Trichy - BS in Materials Engineering</div>
-            </div>
+    <main id="main-content" class="container">
+        <!-- Hero section -->
+        <section class="hero" aria-labelledby="hero-title">
+            <!-- Keep profile.PNG in the same folder as this HTML file. -->
+            <img
+                src="profile.PNG"
+                alt="Saikiran Gopalakrishnan"
+                class="profile-pic"
+                width="150"
+                height="150"
+            >
+
+            <h1 id="hero-title">
+                Hi, I'm <span class="name">Saikiran</span>
+                <span aria-hidden="true">🎧</span>
+            </h1>
+
+            <p>
+                I am a <strong>Software Engineer</strong> specializing
+                in CAD tooling, digital twins, simulation and mapping
+                tools, and 3D geometry processing pipelines.
+            </p>
+
+            <ul class="meta-info">
+                <li class="meta-item">
+                    <span class="meta-icon" aria-hidden="true">📍</span>
+                    <span>Chicago, Illinois</span>
+                </li>
+
+                <li class="meta-item">
+                    <span class="meta-icon" aria-hidden="true">💼</span>
+                    <span>Senior Technology Analyst @ IndX</span>
+                </li>
+
+                <li class="meta-item">
+                    <span class="meta-icon" aria-hidden="true">🎓</span>
+                    <span>
+                        Purdue University — MS, PhD in Aeronautics
+                        &amp; Astronautics
+                        (Focus Area: Digital Twin Tooling)
+                    </span>
+                </li>
+
+                <li class="meta-item">
+                    <span class="meta-icon" aria-hidden="true">🎓</span>
+                    <span>
+                        National Institute of Technology,
+                        Tiruchirappalli — BTech in Metallurgy
+                        and Materials Engineering
+                    </span>
+                </li>
+            </ul>
+
             <div class="btn-container">
-                <a href="https://linkedin.com" target="_blank" class="btn">Connect on LinkedIn</a>
-                <a href="https://github.com" target="_blank" class="btn btn-secondary" style="color: var(--text-primary); text-decoration: none;">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1.1em" width="1.1em" xmlns="http://w3.org" style="vertical-align: middle; margin-right: 6px; margin-bottom: 3px;">
-                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
-                    </svg>View GitHub Profile
+                <a
+                    href="https://www.linkedin.com/in/saikiran-gopalakrishnan-phd-4a4b3772/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn"
+                >
+                    Connect on LinkedIn
+                    <span aria-hidden="true">↗</span>
                 </a>
-                <a href="#publications" class="btn btn-secondary">View Publications</a>
+
+                <a
+                    href="https://github.com/SaikiranGopal3009"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-secondary"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        aria-hidden="true"
+                        focusable="false"
+                    >
+                        <path
+                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+                        ></path>
+                    </svg>
+                    View GitHub Profile
+                    <span aria-hidden="true">↗</span>
+                </a>
+
+                <a href="#publications" class="btn btn-secondary">
+                    View Publications
+                </a>
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects">
-            <h2>Featured Projects</h2>
+        <!-- Projects section -->
+        <section id="projects" aria-labelledby="projects-title">
+            <h2 id="projects-title">Featured Projects</h2>
+
             <div class="grid">
-                <div class="card">
+                <article class="card">
                     <h3>av-map-validator</h3>
-                    <p>Tools for validation and visualizing autonomous-vehicle map geometry.</p>
-                    <div class="tags" style="margin-top: 12px;">
-                        <span class="tag">Geometry</span>
-                        <span class="tag">Mapping</span>
-                        <span class="tag">AV Infrastructure</span>
-                    </div>
-                </div>
-                <div class="card">
+
+                    <p>
+                        Tools for validating and visualizing
+                        autonomous-vehicle map geometry.
+                    </p>
+
+                    <ul class="tags" aria-label="Project topics">
+                        <li class="tag">Geometry</li>
+                        <li class="tag">Mapping</li>
+                        <li class="tag">AV Infrastructure</li>
+                    </ul>
+                </article>
+
+                <article class="card">
                     <h3>robot-converter</h3>
-                    <p>A STEP CAD → URDF Converter written in C++ tailored for ROS and NVIDIA Isaac Sim Digital Twins.</p>
-                    <div class="tags" style="margin-top: 12px;">
-                        <span class="tag">C++</span>
-                        <span class="tag">ROS</span>
-                        <span class="tag">Isaac Sim</span>
-                    </div>
-                </div>
+
+                    <p>
+                        A STEP CAD-to-URDF converter written in C++,
+                        tailored for ROS and NVIDIA Isaac Sim
+                        digital twins.
+                    </p>
+
+                    <ul class="tags" aria-label="Project technologies">
+                        <li class="tag">C++</li>
+                        <li class="tag">ROS</li>
+                        <li class="tag">Isaac Sim</li>
+                    </ul>
+                </article>
             </div>
         </section>
 
-        <!-- Publications Section -->
-        <section id="publications">
-            <h2>Publications & Research</h2>
+        <!-- Publications section -->
+        <section
+            id="publications"
+            aria-labelledby="publications-title"
+        >
+            <h2 id="publications-title">
+                Publications &amp; Research
+            </h2>
+
             <div class="publication-list">
-                <div class="pub-card">
-                    <div class="pub-title">Model-based feature information network (mfin): a digital twin framework to integrate location-specific material behavior within component design, manufacturing, and sustainment</div>
-                    <div class="pub-authors">S Gopalakrishnan, NW Hartman, MD Sangid</div>
-                    <div class="pub-meta">Integrating Materials and Manufacturing Innovation 9 (4), 394-409, 2020</div>
-                </div>
-                <div class="pub-card">
-                    <div class="pub-title">A digital engineering framework to facilitate automated data exchange between geometric inspection and structural analysis</div>
-                    <div class="pub-authors">S Gopalakrishnan, NW Hartman, MD Sangid</div>
-                    <div class="pub-meta">Advances in Engineering Software 183, 103498, 2023</div>
-                </div>
+                <article class="pub-card">
+                    <h3 class="pub-title">
+                        Model-based feature information network (mfin):
+                        a digital twin framework to integrate
+                        location-specific material behavior within
+                        component design, manufacturing, and sustainment
+                    </h3>
+
+                    <p class="pub-authors">
+                        S Gopalakrishnan, NW Hartman, MD Sangid
+                    </p>
+
+                    <p class="pub-meta">
+                        <cite>
+                            Integrating Materials and Manufacturing
+                            Innovation
+                        </cite>,
+                        9 (4), 394–409, 2020
+                    </p>
+                </article>
+
+                <article class="pub-card">
+                    <h3 class="pub-title">
+                        A digital engineering framework to facilitate
+                        automated data exchange between geometric
+                        inspection and structural analysis
+                    </h3>
+
+                    <p class="pub-authors">
+                        S Gopalakrishnan, NW Hartman, MD Sangid
+                    </p>
+
+                    <p class="pub-meta">
+                        <cite>Advances in Engineering Software</cite>,
+                        183, 103498, 2023
+                    </p>
+                </article>
             </div>
-            <a href="https://google.com" target="_blank" class="btn btn-secondary">View Full Google Scholar Profile ↗</a>
+
+            <a
+                href="https://scholar.google.com/citations?user=aOJsAQkAAAAJ&amp;hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-secondary"
+            >
+                View Full Google Scholar Profile
+                <span aria-hidden="true">↗</span>
+            </a>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact">
-            <h2>Let's Connect</h2>
-            <p>Interested in geometry problems, mapping tooling, autonomous vehicle simulation, digital twins, or automation software?</p>
+        <!-- Contact section -->
+        <section
+            id="contact"
+            class="contact"
+            aria-labelledby="contact-title"
+        >
+            <h2 id="contact-title">Let's Connect</h2>
+
+            <p>
+                Interested in geometry problems, mapping tools,
+                autonomous-vehicle simulation, digital twins,
+                or automation software? Connect with me on LinkedIn.
+            </p>
+
+            <div class="btn-container">
+                <a
+                    href="https://www.linkedin.com/in/saikiran-gopalakrishnan-phd-4a4b3772/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn"
+                >
+                    Connect on LinkedIn
+                    <span aria-hidden="true">↗</span>
+                </a>
+
+                <a
+                    href="https://github.com/SaikiranGopal3009"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-secondary"
+                >
+                    Explore My GitHub
+                    <span aria-hidden="true">↗</span>
+                </a>
+
+                <a
+                    href="https://scholar.google.com/citations?user=aOJsAQkAAAAJ&amp;hl=en"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-secondary"
+                >
+                    Google Scholar
+                    <span aria-hidden="true">↗</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            &copy; Saikiran Gopalakrishnan.
+            All rights reserved.
+        </p>
+    </footer>
+</body>
+</html>
